@@ -5,7 +5,7 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
-const setupDb = require("./db/database");
+const setupDb = require("./db/database"); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
