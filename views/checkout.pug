@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  section.section-heading
+    h1 Mock Checkout
+    p This payment page is fake for the class project. It does not charge real money.
+
+  .checkout-layout
+    section.checkout-box
+      h2 Payment Information
+      form(method="POST", action="/checkout")
+        label(for="cardName") Name on Card
+        input#cardName(type="text", name="cardName", placeholder="Ava Smith", required)
+
+        label(for="cardNumber") Card Number
+        input#cardNumber(type="text", name="cardNumber", placeholder="4242 4242 4242 4242", required)
+
+        label(for="address") Shipping Address
+        input#address(type="text", name="address", placeholder="123 Mystery Lane", required)
+
+        button.button(type="submit") Place Mock Order
+
+    section.checkout-box
+      h2 Order Summary
+      each item in items
+        .summary-row
+          span #{item.product.name} x #{item.quantity}
+          span $#{money(item.lineTotal)}
+      .summary-total
+        strong Total
+        strong $#{money(total)}

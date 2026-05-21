@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  section.profile-header
+    h1 Welcome, #{user.name}!
+    p
+      strong Email: 
+      | #{user.email}
+    p
+      strong Member since: 
+      | #{user.created_at}
+
+  section.section-heading
+    h2 Purchase History
+    p Your completed checkout orders will appear here.
+
+  if purchases.length === 0
+    .empty-box
+      h3 No purchases yet
+      p Add a product to your cart and complete the mock checkout to create a purchase history item.
+  else
+    .table-wrap
+      table
+        thead
+          tr
+            th Order #
+            th Date
+            th Product
+            th Quantity
+            th Price Each
+            th Order Total
+        tbody
+          each purchase in purchases
+            tr
+              td ##{purchase.order_id}
+              td= purchase.created_at
+              td= purchase.product_name
+              td= purchase.quantity
+              td $#{money(purchase.price)}
+              td $#{money(purchase.total)}

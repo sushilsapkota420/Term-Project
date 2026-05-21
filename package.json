@@ -1,0 +1,26 @@
+{
+  "name": "term-project",
+  "version": "1.0.0",
+  "description": "Simple mystery box e-commerce website for CSC 317 using Node, Express, Pug, SQLite, sessions, and bcrypt password hashing.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "express",
+    "sqlite",
+    "mystery-boxes"
+  ],
+  "author": "CSC 317 Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "pug": "^3.0.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

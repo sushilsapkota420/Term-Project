@@ -1,0 +1,54 @@
+//- views/layout.pug
+//- ------------------------------------------------------------
+//- This is the base layout used by every page.
+//- The navbar, footer, CSS link, and JavaScript link live here.
+//- Each page fills in the middle part using "block content".
+//- ------------------------------------------------------------
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} | MysteryBox Market
+    link(rel="stylesheet", href="/css/style.css")
+    script(src="/js/main.js", defer)
+  body
+    header.site-header
+      .navbar
+        a.logo(href="/") MysteryBox Market
+
+        form.nav-search(method="GET", action="/")
+          input(
+            type="search",
+            name="q",
+            placeholder="Search mystery boxes...",
+            value=typeof search !== "undefined" ? search : ""
+          )
+          button(type="submit") Search
+
+        nav.nav-links(aria-label="Main navigation")
+          a(href="/") Home
+          a(href="/about") About
+          a(href="/faq") FAQ
+          a(href="/cart") Cart (#{cartCount})
+
+          if currentUser
+            a(href="/profile") Profile
+            form.inline-form(method="POST", action="/logout")
+              button.link-button(type="submit") Logout
+          else
+            a(href="/login") Login
+            a(href="/register") Register
+
+    main.page-container
+      if message
+        .notice.success= message
+
+      if error
+        .notice.error= error
+
+      block content
+
+    footer.site-footer
+      p &copy; #{currentYear} MysteryBox Market. Built for our CSC 317 e-commerce project.

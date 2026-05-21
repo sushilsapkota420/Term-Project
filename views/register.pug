@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  section.form-card
+    h1 Create Account
+    p Register so your mystery box purchases can be saved to your profile.
+
+    form(method="POST", action="/register")
+      label(for="name") Name
+      input#name(type="text", name="name", placeholder="Ava Smith", required)
+
+      label(for="email") Email
+      input#email(type="email", name="email", placeholder="ava@example.com", required)
+
+      label(for="password") Password
+      input#password(type="password", name="password", placeholder="At least 6 characters", minlength="6", required)
+
+      button.button(type="submit") Register
+
+    p.small-text
+      | Already have an account? 
+      a(href="/login") Login
+      | .

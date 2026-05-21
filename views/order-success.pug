@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  section.success-card
+    h1 Order Complete!
+    p Your mock payment was accepted and your order was saved.
+    p
+      strong Order Number: 
+      | ##{orderId}
+
+    h2 Receipt
+    each item in items
+      .summary-row
+        span #{item.product.name} x #{item.quantity}
+        span $#{money(item.lineTotal)}
+
+    .summary-total
+      strong Total
+      strong $#{money(total)}
+
+    a.button(href="/profile") View Purchase History
+    a.secondary-link(href="/") Keep Shopping

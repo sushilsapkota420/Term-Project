@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  section.detail-card
+    .detail-image-wrap
+      img.detail-image(src=product.image, alt=product.name)
+
+    .detail-info
+      p.product-theme= product.theme
+      h1= product.name
+      p.detail-price $#{money(product.price)}
+      p= product.description
+      p
+        strong Stock: 
+        | #{product.stock} available
+
+      form(method="POST", action=`/cart/add/${product.id}`)
+        if product.stock > 0
+          button.button(type="submit") Add to Cart
+        else
+          button.button(type="button", disabled) Sold Out
+
+      a.back-link(href="/") ← Back to storefront

@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  section.hero
+    .hero-text
+      p.eyebrow Surprise boxes for every hobby
+      h1 Find your next mystery box.
+      p We sell themed mystery boxes for gamers, collectors, students, readers, pet owners, and more.
+      a.button(href="#products") Shop 12 Mystery Boxes
+
+  section#products.section-heading
+    h2 Storefront
+    p Search by product name, theme, description, or keyword.
+
+  if search
+    p.search-note Showing results for #[strong #{search}]
+
+  if products.length === 0
+    .empty-box
+      h3 No products found
+      p Try searching for gaming, snacks, anime, school, books, pets, or tech.
+  else
+    .product-grid
+      each product in products
+        article.product-card
+          a.product-image-link(href=`/products/${product.id}`)
+            img.product-image(src=product.image, alt=product.name)
+
+          .product-card-body
+            p.product-theme= product.theme
+            h3
+              a(href=`/products/${product.id}`)= product.name
+            p.product-description= product.description
+
+            .product-meta
+              span.price $#{money(product.price)}
+              span.stock #{product.stock} in stock
+
+            form(method="POST", action=`/cart/add/${product.id}`)
+              if product.stock > 0
+                button.full-button(type="submit") Add to Cart
+              else
+                button.full-button(type="button", disabled) Sold Out
