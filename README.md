@@ -1,4 +1,5 @@
 # term-project
+ link to live deployed site- http://167.99.0.219:3000
 
 MysteryBox Market is a simple e-commerce website for a CSC 317 class project. The fake company sells themed mystery boxes, such as gaming boxes, snack boxes, tech boxes, book boxes, and pet boxes.
 
